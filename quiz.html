@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>Select Topic to Begin</h2>
+    <select id="topic">
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="javascript">JavaScript</option>
+    </select>
+    <button id="startQuiz">Start Quiz</button>
+
+    <div id="quiz-section" style="display: none;">
+      <div class="question" id="question">Loading...</div>
+      <ul class="answers" id="answers"></ul>
+      <button id="submit">Submit Answer</button>
+      <div id="feedback"></div>
+      <div id="result"></div>
+      <div id="celebration" style="display:none;">🎉 Congratulations! 🎉</div>
+      <a href="score.html"><button id="finish" style="display:none;">View Score</button></a>
+    </div>
+  </div>
+  <script src="quiz.js"></script>
+</body>
+</html>
