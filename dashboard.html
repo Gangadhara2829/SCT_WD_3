@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard | Quiz Platform</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Fullscreen Intro Animation */
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #38bdf8;
+      font-size: 2rem;
+      z-index: 9999;
+      animation: fadeOut 2s ease 2s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="intro">Welcome to QuizArena</div>
+
+  <div class="navbar">
+    <div class="logo">QuizArena</div>
+    <div class="nav-items">
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <main class="dashboard">
+    <h2>Dashboard</h2>
+
+    <div class="card">
+      <h3>Start a Quiz</h3>
+      <p>Choose your topic and get started!</p>
+      <button>Begin</button>
+    </div>
+
+    <div class="card">
+      <h3>Leaderboard</h3>
+      <p>See who’s leading the scoreboard this week.</p>
+      <button>View</button>
+    </div>
+
+    <div class="card">
+      <h3>My Results</h3>
+      <p>Track your progress and scores here.</p>
+      <button>Check</button>
+    </div>
+  </main>
+
+  <script>
+    function logout() {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

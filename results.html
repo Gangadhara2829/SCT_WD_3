@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Results | QuizArena</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">QuizArena</div>
+  </div>
+  <main class="dashboard">
+    <h2>Your Score</h2>
+    <p id="scoreText">Calculating...</p>
+    <button onclick="goHome()">Back to Dashboard</button>
+  </main>
+
+  <script>
+    const score = localStorage.getItem("quizScore") || 0;
+    document.getElementById("scoreText").textContent = `You scored ${score} out of 3!`;
+
+    function goHome() {
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
