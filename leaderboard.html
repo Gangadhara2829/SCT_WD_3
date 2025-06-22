@@ -1,8 +1,8 @@
-<!-- leaderboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard | QuizArena</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,10 +15,43 @@
   </div>
 
   <main class="dashboard">
-    <h2>Leaderboard</h2>
-    <p>This section will show top scorers.</p>
-    <!-- You can fetch data from Firebase later -->
+    <h2>🏆 Leaderboard</h2>
+    <ul id="scoreList" class="leaderboard-list"></ul>
   </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBVZ7aJqvALfPhB7lzGF1wdh4wQBKsoYJU",
+      authDomain: "quiz-app-f0b2b.firebaseapp.com",
+      projectId: "quiz-app-f0b2b",
+      storageBucket: "quiz-app-f0b2b.appspot.com",
+      messagingSenderId: "880241252847",
+      appId: "1:880241252847:web:107f922e3619e1be8f7e1a",
+      measurementId: "G-TE712E9LEG"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function loadLeaderboard() {
+      const q = query(collection(db, "leaderboard"), orderBy("score", "desc"));
+      const querySnapshot = await getDocs(q);
+      const list = document.getElementById("scoreList");
+
+      querySnapshot.forEach((doc, index) => {
+        const data = doc.data();
+        const li = document.createElement("li");
+        li.className = "leaderboard-item";
+        li.innerHTML = `<strong>#${index + 1}</strong> <span>${data.name || "Anonymous"}</span> <span>${data.score}/${data.total}</span>`;
+        list.appendChild(li);
+      });
+    }
+
+    loadLeaderboard();
+  </script>
 
   <script>
     function goHome() {

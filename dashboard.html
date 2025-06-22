@@ -29,6 +29,13 @@
         visibility: hidden;
       }
     }
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -47,25 +54,37 @@
     <div class="card">
       <h3>Start a Quiz</h3>
       <p>Choose your topic and get started!</p>
-      <button>Begin</button>
+      <button onclick="startQuiz()">Begin</button>
     </div>
 
     <div class="card">
       <h3>Leaderboard</h3>
       <p>See who’s leading the scoreboard this week.</p>
-      <button>View</button>
+      <button onclick="viewLeaderboard()">View</button>
     </div>
 
     <div class="card">
       <h3>My Results</h3>
       <p>Track your progress and scores here.</p>
-      <button>Check</button>
+      <button onclick="viewResults()">Check</button>
     </div>
   </main>
 
   <script>
     function logout() {
       window.location.href = "index.html";
+    }
+
+    function startQuiz() {
+      window.location.href = "quiz.html";
+    }
+
+    function viewLeaderboard() {
+      window.location.href = "leaderboard.html";
+    }
+
+    function viewResults() {
+      window.location.href = "results.html";
     }
   </script>
 </body>

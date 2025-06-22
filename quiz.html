@@ -2,9 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz | QuizArena</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .option-btn {
+      background-color: #f0f0f0;
+      border: 2px solid #007bff;
+      color: #333;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .option-btn:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .option-btn.selected {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #nextBtn, .nav-items button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    #nextBtn:hover, .nav-items button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
   <div class="navbar">
@@ -25,6 +64,7 @@
 
     let currentQuestion = 0;
     let score = 0;
+    let selectedAnswer = null;
 
     const questionText = document.getElementById("question-text");
     const optionsDiv = document.getElementById("options");
@@ -32,32 +72,44 @@
 
     function loadQuestion() {
       const q = questions[currentQuestion];
-      questionText.textContent = q.question;
+      questionText.textContent = `Q${currentQuestion + 1}: ${q.question}`;
       optionsDiv.innerHTML = "";
+      selectedAnswer = null;
+      nextBtn.style.display = "none";
 
       q.options.forEach(option => {
         const btn = document.createElement("button");
         btn.textContent = option;
         btn.className = "option-btn";
-        btn.onclick = () => checkAnswer(option, q.answer);
+        btn.onclick = () => selectAnswer(btn, option);
         optionsDiv.appendChild(btn);
       });
     }
 
-    function checkAnswer(selected, correct) {
-      if (selected === correct) score++;
+    function selectAnswer(button, answer) {
+      const allButtons = document.querySelectorAll(".option-btn");
+      allButtons.forEach(btn => btn.classList.remove("selected"));
+      button.classList.add("selected");
+      selectedAnswer = answer;
+      nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.onclick = () => {
+      if (!selectedAnswer) return;
+      if (selectedAnswer === questions[currentQuestion].answer) score++;
       currentQuestion++;
       if (currentQuestion < questions.length) {
         loadQuestion();
       } else {
         localStorage.setItem("quizScore", score);
+        localStorage.setItem("quizTotal", questions.length);
         window.location.href = "results.html";
       }
-    }
+    };
 
-    nextBtn.style.display = "none";
     loadQuestion();
   </script>
+
   <script>
     function goHome() {
       window.location.href = "dashboard.html";
