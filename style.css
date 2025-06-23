@@ -1,4 +1,4 @@
-/* Global Layout */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,7 +14,7 @@ body {
   height: 100%;
 }
 
-/* Sidebar */
+
 .sidebar {
   width: 220px;
   background-color: #1e1e2f;
@@ -47,7 +47,6 @@ body {
   color: white;
 }
 
-/* Main Quiz */
 .quiz-main {
   flex: 1;
   display: flex;
@@ -113,7 +112,7 @@ body {
   background-color: #007b8f;
 }
 
-/* Navbar */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -156,7 +155,7 @@ body {
   color: #0f172a;
 }
 
-/* Login Page Layout */
+
 .login-main {
   display: flex;
   flex-direction: column;
@@ -181,7 +180,6 @@ body {
   color: #cbd5e1;
 }
 
-/* Profile image styling */
 .login-main .profile-img {
   width: 120px;
   height: 120px;
@@ -192,7 +190,6 @@ body {
   border: 3px solid #38bdf8;
 }
 
-/* Reviewer section */
 .reviewer-section {
   background: #0f172a;
   border: 1px solid #334155;
@@ -238,7 +235,7 @@ body {
   background-color: #0ea5e9;
 }
 
-/* Dashboard Page Layout */
+
 .dashboard {
   padding: 40px;
   background-color: #1e293b;
@@ -291,7 +288,7 @@ body {
 .dashboard .card button:hover {
   background-color: #0ea5e9;
 }
-/* Reset and Base */
+
 * {
   margin: 0;
   padding: 0;
@@ -305,7 +302,6 @@ body, html {
   overflow-x: hidden;
 }
 
-/* Layout */
 body {
   display: flex;
   flex-direction: column;
@@ -313,7 +309,7 @@ body {
   color: white;
 }
 
-/* Navbar */
+
 .navbar {
   width: 100%;
   display: flex;
@@ -345,7 +341,6 @@ body {
   color: #0f172a;
 }
 
-/* Dashboard Section */
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -361,7 +356,6 @@ body {
   color: #38bdf8;
 }
 
-/* Cards Layout */
 .card {
   background-color: #0f1b30;
   padding: 20px;
@@ -402,7 +396,6 @@ body {
   background-color: #0ea5e9;
 }
 
-/* Responsive Grid for Cards on large screens */
 @media (min-width: 768px) {
   .dashboard {
     display: grid;
